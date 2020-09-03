@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shortguid</title>
+</head>
+<body>
+    <div>
+        <h2>使用JS实现无损缩短guid/uuid的长度到22位字符</h2>
+        <h2>using JS to achieve lossless reduction of the length of the GUID/UUID to 22 characters.</h2>
+        <p>short: <b>ShortGuid.short("3ec6ecc0-8698-4d83-8020-caec0d143a43")</b></p>
+        <p>restore: <b>ShortGuid.restore("0_nkp0XfXDWu0WokmD53f3")</b></p>
+        <div id="result" style="border:1px solid #ededed;padding:0 20px;"></div>
+    </div>
+    <script type="module">
+        import ShortGuid from "./src/shortguid.js";
+
+        const guid = "3ec6ecc0-8698-4d83-8020-caec0d143a43";
+        const shortGuid = ShortGuid.short(guid);
+        document.querySelector("#result").innerHTML = `
+        <p>test guid: ${guid}</p>
+        <p>short guid: ${shortGuid}</p>
+        <p>restore short guid: ${ShortGuid.restore(shortGuid)}</p>
+        `; 
+    </script>
+</body>
+</html>

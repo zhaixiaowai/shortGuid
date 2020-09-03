@@ -1,0 +1,19 @@
+{
+  "name": "shortguid",
+  "version": "1.0.0",
+  "description": "using JS to achieve lossless reduction of the length of the GUID/UUID to 22 characters.",
+  "main": "main",  
+  "scripts": { 
+    "run": "node ./main.js"
+  },
+  "keywords": [
+    "js",
+    "shortguid",
+    "image preview"
+  ],
+  "author": "zhaixiaowai",
+  "license": "",
+  "dependencies": {
+    "formidable": "^1.2.2"
+  }
+}
