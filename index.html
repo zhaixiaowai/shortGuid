@@ -18,11 +18,30 @@
 
         const guid = "3ec6ecc0-8698-4d83-8020-caec0d143a43";
         const shortGuid = ShortGuid.short(guid);
-        document.querySelector("#result").innerHTML = `
+        const domResult=document.querySelector("#result");
+        domResult.innerHTML = `
         <p>test guid: ${guid}</p>
         <p>short guid: ${shortGuid}</p>
         <p>restore short guid: ${ShortGuid.restore(shortGuid)}</p>
         `; 
+        (function(){
+            let startTime = Date.now();
+            for (let index = 0; index < 10000; index++) {
+                ShortGuid.short(guid)
+            }
+            let useMilSecond = Date.now() - startTime;
+            domResult.innerHTML+=`<p><b>ShortGuid.short</b></p><p>循环执行10000次耗时${useMilSecond}ms,平均耗时${(useMilSecond/10000).toFixed(5)}ms</p>
+            <p>It takes ${useMilSecond}ms to execute 10000 cycles, with an average time of ${(useMilSecond/10000).toFixed(5)}ms</p>`;
+        })();
+        (function(){
+            let startTime = Date.now();
+            for (let index = 0; index < 10000; index++) {
+                ShortGuid.restore(shortGuid)
+            }
+            let useMilSecond = Date.now() - startTime;
+            domResult.innerHTML+=`<p><b>ShortGuid.restore</b></p><p>循环执行10000次耗时${useMilSecond}ms,平均耗时${(useMilSecond/10000).toFixed(5)}ms</p>
+            <p>It takes ${useMilSecond}ms to execute 10000 cycles, with an average time of ${(useMilSecond/10000).toFixed(5)}ms</p>`;
+        })();
     </script>
 </body>
 </html>
